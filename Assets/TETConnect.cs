@@ -10,6 +10,73 @@ using System;
 
 public class TETConnect : MonoBehaviour
 {
+    //データ格納用クラス
+    [System.Serializable]
+    public class raw
+    {
+        public float x = 0;
+        public float y = 0;
+    }
+
+    [System.Serializable]
+    public class pcenter
+    {
+        public float x = 0;
+        public float y = 0;
+    }
+
+    [System.Serializable]
+    public class avg
+    {
+        public float x = 0;
+        public float y = 0;
+    }
+
+    [System.Serializable]
+    public class lefteye
+    {
+        public avg avg = null;
+        public pcenter pcenter = null;
+        public float psize = 0;
+        public raw raw = null;
+    }
+
+    [System.Serializable]
+    public class righteye
+    {
+        public avg avg = null;
+        public pcenter pcenter = null;
+        public float psize = 0;
+        public raw raw = null;
+    }
+
+    [System.Serializable]
+    public class frame
+    {
+        public avg avg = null;
+        public bool fix = false;
+        public lefteye lefteye = null;
+        public raw raw = null;
+        public righteye righteye = null;
+        public int state = 0;
+        public int time = 0;
+        public string timestamp = null;
+    }
+
+    [System.Serializable]
+    public class values
+    {
+        public frame frame = null;
+    }
+
+    [System.Serializable]
+    public class TETData
+    {
+        public string category = null;
+        public string request = null;
+        public int statuscode = 0;
+        public values values = null;
+    }
     private Thread thread;
     private ThreadStart ts;
     private bool keepOnRunning = true;
@@ -19,8 +86,9 @@ public class TETConnect : MonoBehaviour
     private int ThreadSleepTime = 10;
     private byte[] buffer;
 
-    public TETConnect() { }
 
+
+    public TETConnect() { }
     public void Connect()
     {
         client = new TcpClient("127.0.0.1", 6555);// -> Thee EyeTribe server
@@ -57,6 +125,10 @@ public class TETConnect : MonoBehaviour
                     if (dataLine != null)
                     {
                         ///do something here 
+                        if( dataLine.Contains("tracker")){
+                        TETData TET = JsonUtility.FromJson<TETData>(dataLine);
+                        //Debug.Log( TET.values.frame.lefteye.pcenter.x );
+                        }
 
                     }
                     else
