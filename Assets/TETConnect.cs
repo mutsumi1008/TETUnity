@@ -83,7 +83,7 @@ public class TETConnect : MonoBehaviour
     private TcpClient client;
     private Stream stream;
     private int bufferSize = 4096;
-    private int ThreadSleepTime = 10;
+    private int ThreadSleepTime = 5;
     private byte[] buffer;
 
 
@@ -125,9 +125,9 @@ public class TETConnect : MonoBehaviour
                     if (dataLine != null)
                     {
                         ///do something here 
-                        if( dataLine.Contains("tracker")){
+                        if( dataLine.Contains("frame")){
                         TETData TET = JsonUtility.FromJson<TETData>(dataLine);
-                        //Debug.Log( TET.values.frame.lefteye.pcenter.x );
+                        Debug.Log( TET.values.frame.lefteye.pcenter.x );
                         }
 
                     }
