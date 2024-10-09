@@ -87,8 +87,40 @@ public class TETConnect : MonoBehaviour
     private byte[] buffer;
 
 
+    public TETData TET;
+    
 
-    public TETConnect() { }
+
+
+    public TETConnect() {
+        /*TET  = new TETData(); 
+        TET.category="";
+        TET.request="";
+        TET.statuscode=0;
+        TET.values.Frame.avrg.x=0;
+        TET.values.Frame.avrg.y=0;
+        TET.values.Frame.fix=false;
+        TET.values.Frame.leftEye.avrg.x=0;
+        TET.values.Frame.leftEye.avrg.y=0;
+        TET.values.Frame.leftEye.pCenter.x=0;
+        TET.values.Frame.leftEye.pCenter.y=0;
+        TET.values.Frame.leftEye.pSize=0;
+        TET.values.Frame.leftEye.raw.x=0;
+        TET.values.Frame.leftEye.raw.y=0;
+        TET.values.Frame.raw.x = 0;
+        TET.values.Frame.raw.y = 0;
+        TET.values.Frame.rightEye.avrg.x=0;
+        TET.values.Frame.rightEye.avrg.y=0;
+        TET.values.Frame.rightEye.pCenter.x=0;
+        TET.values.Frame.rightEye.pCenter.y=0;
+        TET.values.Frame.rightEye.pSize=0;
+        TET.values.Frame.rightEye.raw.x=0;
+        TET.values.Frame.rightEye.raw.y=0;
+        TET.values.Frame.state=0;
+        TET.values.Frame.time=0;
+        TET.values.Frame.timestamp="";*/
+    }
+
     public void Connect()
     {
         client = new TcpClient("127.0.0.1", 6555);// -> Thee EyeTribe server
@@ -116,7 +148,7 @@ public class TETConnect : MonoBehaviour
                 StringReader Rdr = new StringReader(packet);
 
                 /////////////
-                Debug.Log(packet);
+                //Debug.Log(packet);
                 /////////////
 
                 while (true)
@@ -126,8 +158,9 @@ public class TETConnect : MonoBehaviour
                     {
                         ///do something here 
                         if( dataLine.Contains("frame")){
-                        TETData TET = JsonUtility.FromJson<TETData>(dataLine);
-                        Debug.Log( TET.values.frame.lefteye.pcenter.x );
+                            TET = JsonUtility.FromJson<TETData>(dataLine);
+                            //Debug.Log( TET.values.frame.lefteye.avg.x );
+                            //Debug.Log( TET.values.Frame.avrg.x );
                         }
 
                     }
