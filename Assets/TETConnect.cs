@@ -93,32 +93,7 @@ public class TETConnect : MonoBehaviour
 
 
     public TETConnect() {
-        /*TET  = new TETData(); 
-        TET.category="";
-        TET.request="";
-        TET.statuscode=0;
-        TET.values.Frame.avrg.x=0;
-        TET.values.Frame.avrg.y=0;
-        TET.values.Frame.fix=false;
-        TET.values.Frame.leftEye.avrg.x=0;
-        TET.values.Frame.leftEye.avrg.y=0;
-        TET.values.Frame.leftEye.pCenter.x=0;
-        TET.values.Frame.leftEye.pCenter.y=0;
-        TET.values.Frame.leftEye.pSize=0;
-        TET.values.Frame.leftEye.raw.x=0;
-        TET.values.Frame.leftEye.raw.y=0;
-        TET.values.Frame.raw.x = 0;
-        TET.values.Frame.raw.y = 0;
-        TET.values.Frame.rightEye.avrg.x=0;
-        TET.values.Frame.rightEye.avrg.y=0;
-        TET.values.Frame.rightEye.pCenter.x=0;
-        TET.values.Frame.rightEye.pCenter.y=0;
-        TET.values.Frame.rightEye.pSize=0;
-        TET.values.Frame.rightEye.raw.x=0;
-        TET.values.Frame.rightEye.raw.y=0;
-        TET.values.Frame.state=0;
-        TET.values.Frame.time=0;
-        TET.values.Frame.timestamp="";*/
+      
     }
 
     public void Connect()
